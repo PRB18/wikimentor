@@ -6,27 +6,31 @@ All powered by **LLama 3 via GroqCloud** 🧠⚡
 
 ---
 
-## 🚀 Features
+## 🔀 Versions
 
-- 🔍 **Learn a Topic** — Search anything, get:
-  - Wikipedia summary
-  - Wikibooks resources
-  - Wikidata facts
-  - Wikiversity links
-- 💬 **Mentor Chat** — Ask questions and get clean, simple AI explanations
-- 🧠 **Flashcard Review Mode** — Auto-generated flashcards to help you revise
-- 🎨 **Dark/Light Mode**
-- 🖥️ **Streamlit UI**, fully deployable on Hugging Face Spaces
+| Mode              | Stack     | File             | Status |
+|-------------------|-----------|------------------|--------|
+| 🖥️ Local Dev       | Streamlit | `app.py`         | Full UI (Learn + Chat + Flashcards) |
+| 🌐 HF Deployment   | Gradio    | `gradio_app.py`  | Simplified UI for Hugging Face |
+
+👉 Live App: [View on Hugging Face](https://huggingface.co/spaces/Rizzhi/wikimentor)
 
 ---
 
 ## 🧠 AI Model Used
 
-This app uses:
-
-> 🧠 `llama3-8b-8192` (Meta AI)  
+> 🧠 `llama3-8b-8192` by Meta  
 > ⚡ Served via [GroqCloud](https://console.groq.com/)  
-> 🔌 Accessed through OpenAI-compatible APIs
+> 🔌 Accessed through OpenAI-compatible API
+
+---
+
+## 🚀 Features
+
+- 🔍 **Learn a Topic** — Wikipedia summary + books + facts
+- 💬 **Mentor Chat** — Ask follow-up questions
+- 🧠 **Flashcard Generator** — Auto-review mode
+- 🌗 **Dark/Light Theme (Streamlit version)**
 
 ---
 
@@ -35,55 +39,48 @@ This app uses:
 | Layer        | Tech                     |
 |--------------|--------------------------|
 | 💡 LLM        | Meta’s LLaMA 3 (via Groq) |
-| 🧠 Flashcards | LLM Prompt Engineering   |
-| 🔍 Knowledge  | Wikipedia, Wikibooks, Wikiversity, Wikidata APIs |
-| 🌐 Frontend  | Streamlit                |
+| 🌍 Data APIs  | Wikipedia, Wikibooks, Wikidata, Wikiversity |
+| 💬 Frontend  | Streamlit (local), Gradio (cloud) |
 | ☁️ Hosting   | Hugging Face Spaces      |
 
 ---
 
-## 📦 How to Run Locally
+## 📁 Project Structure
 
-> 💡 Requires Python 3.9+ and `streamlit`
+wikimentor/
+├── app.py # Streamlit version
+├── gradio_app.py # Gradio HF deploy version
+├── requirements.txt
+├── modules/
+│ ├── ai_engine.py
+│ └── wiki_fetcher.py
+
+
+---
+
+## 💻 How to Run Locally (Streamlit)
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/wikimentor.git
+git clone https://github.com/PRB18/wikimentor.git
 cd wikimentor
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-
-🔐 Set your Groq API key (optional for local dev)
-
-export GROQ_API_KEY=your_key_here
-
-▶️ Then run:
-
 streamlit run app.py
 
-🌐 Deploy to Hugging Face Spaces
+🌐 How to Deploy to Hugging Face (Gradio)
 
-    Create a new HF Space (SDK: Streamlit)
+    Use gradio_app.py as your entrypoint
 
-    Upload:
+    Set your GROQ_API_KEY as a secret in HF settings
 
-        app.py
+    Make sure requirements.txt includes:
 
-        modules/
+        gradio
 
-        requirements.txt
+        requests
 
-    Add your GROQ_API_KEY as a secret in Settings > Secrets
-
-Done ✅
-📁 Project Structure
-
-wikimentor/
-├── app.py
-├── requirements.txt
-├── modules/
-│   ├── ai_engine.py
-│   └── wiki_fetcher.py
+        wikipedia
 
 📝 License
 
