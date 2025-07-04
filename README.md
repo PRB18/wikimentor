@@ -4,6 +4,7 @@ Welcome to **WikiMentor**, your personalized smart learning companion.
 Search a topic ➤ get concise explanations ➤ review flashcards ➤ ask follow-up questions from a mentor AI.  
 All powered by **LLama 3 via GroqCloud** 🧠⚡
 
+
 ---
 
 ## 🔀 Versions
